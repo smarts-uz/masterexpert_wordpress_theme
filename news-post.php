@@ -1,20 +1,20 @@
 
 <?php 
 	/*
-	Template name: Услуги
-	Template Post Type: services1
+	Template name: Новости
+	Template Post Type: news
 	
 	*/
 	get_header( 'post' )
  ?>
-   <div id="main">
+  <div id="main">
                <div class="page_title transparent disable_title">
                   <div class="container">
                      <div class="breadcrumbs">
                         <!-- Breadcrumb NavXT 6.4.0 -->
                         <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Consulting WP - Miami - Insurance." href="<?php echo home_url(); ?>" class="home">Главная</a></span><span><i class="fa fa-angle-right"></i></span>
                         <span property="itemListElement" typeof="ListItem">
-                           <a property="item" typeof="WebPage" title="Go to Services." href="<?php echo home_url('/services'); ?>" class="stm_service-root post post-stm_service"><span property="name">Услуги</span></a>
+                           <a property="item" typeof="WebPage" title="Go to Services." href="<?php echo home_url('/news'); ?>" class="stm_service-root post post-stm_service"><span property="name">Новости</span></a>
                            <meta property="position" content="2">
                         </span>
                         <span><i class="fa fa-angle-right"></i></span>
@@ -36,10 +36,10 @@
                                        <div class="wpb_single_image wpb_content_element vc_align_left  vc_custom_1611997181345">
                                           <figure class="wpb_wrapper vc_figure">
                                              <div class="vc_single_image-wrapper vc_box_border_grey">
-                                             	<?php 
-                                             	the_post_thumbnail()
-                                             	 ?>
-                                             	
+                                                <?php 
+                                                the_post_thumbnail()
+                                                 ?>
+                                                
                                              </div>
                                           </figure>
                                        </div>
@@ -129,6 +129,8 @@
   
       </div>
       <!--#wrapper-->
+
+
 
 
 

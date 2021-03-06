@@ -1,6 +1,6 @@
 <?php 
 	/*
-	Template name: Услуги категория
+	Template name: Новости категория
 	
 	*/
 	get_header( 'post' )	
@@ -10,7 +10,9 @@
                   <div class="container">
                      <div class="breadcrumbs">
                         <!-- Breadcrumb NavXT 6.4.0 -->
-                        <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Consulting WP - Miami - Insurance." href="<?php echo home_url(); ?>" class="home">Главная</a></span><span><i class="fa fa-angle-right"></i></span>
+                        <span typeof="v:Breadcrumb">
+                           <a rel="v:url" property="v:title" title="Go to Consulting WP - Miami - Insurance." href="<?php echo home_url(); ?>" class="home">Главная</a>
+                        </span><span><i class="fa fa-angle-right"></i></span>
                         <span property="itemListElement" typeof="ListItem">
                            <span property="name"><?php the_title() ?></span>
                            <meta property="position" content="2">
@@ -36,7 +38,7 @@
 												'category'    => 0,
 												'orderby'     => 'date',
 												'order'       => 'ASC',
-												'post_type'   => 'services1',
+												'post_type'   => 'news',
 												'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
 											) );
 

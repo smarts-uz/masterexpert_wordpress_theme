@@ -1,8 +1,7 @@
 
 <?php 
 	/*
-	Template name: Услуги
-	Template Post Type: services1
+	Template name: Полезная информация
 	
 	*/
 	get_header( 'post' )
@@ -14,7 +13,7 @@
                         <!-- Breadcrumb NavXT 6.4.0 -->
                         <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Consulting WP - Miami - Insurance." href="<?php echo home_url(); ?>" class="home">Главная</a></span><span><i class="fa fa-angle-right"></i></span>
                         <span property="itemListElement" typeof="ListItem">
-                           <a property="item" typeof="WebPage" title="Go to Services." href="<?php echo home_url('/services'); ?>" class="stm_service-root post post-stm_service"><span property="name">Услуги</span></a>
+                           <a property="item" typeof="WebPage" title="Go to Services." href="https://consulting.stylemixthemes.com/miami/services-grid/" class="stm_service-root post post-stm_service"><span property="name">Полезная информация</span></a>
                            <meta property="position" content="2">
                         </span>
                         <span><i class="fa fa-angle-right"></i></span>

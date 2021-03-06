@@ -56,8 +56,9 @@
                            <div class="stm-header__cell stm-header__cell_left">
                               <div class="stm-header__element object557 stm-header__element_">
                                  <div class="stm-logo">
-                                    <a href="https://consulting.stylemixthemes.com/miami" title="">
-                                    <img src="./Risk assessment – Consulting WP – Miami – Insurance_files/logo_dark-1.svg" class="attachment-full size-full" alt="" loading="lazy">                </a>
+                                     <a href="<?php echo home_url(); ?>" title="">
+                                       <?php the_custom_logo( $blog_id ); ?>
+                                    </a>
                                  </div>
                               </div>
                            </div>
@@ -81,9 +82,11 @@
                                     <i class="stm-iconbox__icon stm_hb_mtc stm-iconbox__icon_left icon_22px fa fa-phone"></i>
                                     <div class="stm-iconbox__info">
                                        <div class="stm-iconbox__text stm-iconbox__text_nomargin">
+                                        
                                           212 714 0177            
                                        </div>
                                        <div class="stm-iconbox__description">
+                                       
                                           Free call            
                                        </div>
                                     </div>

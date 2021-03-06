@@ -52309,7 +52309,8 @@ body .vc_general.vc_btn3.vc_btn3-color-theme_style_5.vc_btn3-style-outline:hover
 }
 
 .stm_services.style_1 .item .item_wr .item_thumbnail a:after {
-    content: "\e920";
+    content: none;
+    /*content: "\f002";*/
     font-family: stm;
     speak: none;
     font-style: normal;
@@ -57347,6 +57348,7 @@ body .stm_zoom_content .zoom_description .agenda {
     transition: all .3s;
     margin-left: auto;
     margin-right: auto;
+    object-fit: cover;
 }
 
 .eroom-enabled .stm_zoom_grid_container .stm_zoom_grid__item .info {
@@ -100917,9 +100919,10 @@ body .wpb_gallery_slides ul li {
 }
 
 .wpb_single_image img {
-    height: auto;
+    height: 100%;
     max-width: 100%;
-    vertical-align: top
+    vertical-align: top;
+    object-fit: cover;
 }
 
 .wpb_single_image img.vc_img-placeholder {
@@ -114943,4 +114946,62 @@ body.envato-preview-visible.header_style_7 .header_side {
     max-width: 120px;
     width: 100%;
     height: auto
+}
+.swiper-button-prev i::before {
+    content: none;
+    display: none;
+}
+.swiper-button-next i::before {
+    content: none;
+    display: none;
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+    left: -20px!important;
+    color: #1BCB80!important;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    right: -20px!important;
+    color: #1BCB80!important;
+}
+.testimonials_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.testimonials_box_media {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+    border: 2px solid #1bcb81;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+.testimonials_box_media img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.testimonials_box_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30px;
+    color: #002e5b;
+    line-height: 26px;
+    font-size: 22px;
+    font-weight: 400;
+}
+.testimonials_box_text_decs {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0,0,0,.5);
+    line-height: 20px;
+    font-style: normal;
+}
+.testimonials_box_append {
+    text-align: center;
 }

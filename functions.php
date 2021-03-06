@@ -1,4 +1,34 @@
 <?php 
+	
+	if( function_exists('acf_add_options_page') ) {
+			acf_add_options_page();
+			acf_add_options_page_sub_page('Header');
+			acf_add_options_page_sub_page('Footer');
+
+			acf_add_options_page(array(
+		'page_title' 	=> 'Theme General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Header Settings',
+		'menu_title'	=> 'Header',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Footer Settings',
+		'menu_title'	=> 'Footer',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+		}
+
+
+
 	add_action('wp_enqueue_scripts', 'theme_styles');
 	add_action('wp_enqueue_scripts', 'theme_scripts');
 	add_theme_support( 'post-thumbnails' );
@@ -16,6 +46,7 @@
 	function theme_styles() {
 		wp_enqueue_style('styles', get_stylesheet_uri());
 		wp_enqueue_style('style-main', get_template_directory_uri() . '/assets/style.css', array(), time());
+		wp_enqueue_style('style-swiper', 'https://unpkg.com/swiper/swiper-bundle.css');
 		
 	}
 
@@ -36,9 +67,14 @@
 		wp_enqueue_script('slick-js', get_template_directory_uri() . '/assets/slick.min.js' );
 		wp_enqueue_script('jquery.cookie-js', get_template_directory_uri() . '/assets/jquery.cookie.min.js', array(), false, true  );
 
+		wp_enqueue_script('js-swiper', 'https://unpkg.com/swiper/swiper-bundle.js', array(), false, true  );
+		wp_enqueue_script('my-script', get_template_directory_uri() . '/assets/myScript.js', array(), false, true  );
+
+
 		wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/9cf2cb994e.js', array(), false, true  );
 
 	}
+
 
 	add_action( 'init', 'register_post_types' );
 			function register_post_types(){
@@ -111,7 +147,7 @@
 				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
 				'rest_base'           => null, // $post_type. C WP 4.7
 				'menu_position'       => 5,
-				'menu_icon'           => 'dashicons-welcome-learn-more',
+				'menu_icon'           => 'dashicons-buddicons-buddypress-logo',
 				//'capability_type'   => 'post',
 				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
@@ -152,8 +188,8 @@
 				'show_in_admin_bar'   => true, // зависит от show_in_menu
 				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
 				'rest_base'           => null, // $post_type. C WP 4.7
-				'menu_position'       => 5,
-				'menu_icon'           => 'dashicons-welcome-learn-more',
+				'menu_position'       => 6,
+				'menu_icon'           => 'dashicons-image-filter',
 				//'capability_type'   => 'post',
 				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
@@ -195,8 +231,8 @@
 				'show_in_admin_bar'   => true, // зависит от show_in_menu
 				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
 				'rest_base'           => null, // $post_type. C WP 4.7
-				'menu_position'       => 5,
-				'menu_icon'           => 'dashicons-welcome-learn-more',
+				'menu_position'       => 7,
+				'menu_icon'           => 'dashicons-table-row-after',
 				//'capability_type'   => 'post',
 				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
@@ -208,5 +244,130 @@
 				'query_var'           => true,
 			] );
 		}
- ?>
+
+		add_action( 'init', 'register_post_types5' );
+		function register_post_types5(){
+			register_post_type( 'counter', [
+				'label'  => null,
+				'labels' => [
+					'name'               => 'Счётчики', // основное название для типа записи
+					'singular_name'      => 'Счётчик', // название для одной записи этого типа
+					'add_new'            => 'Добавить счётчики', // для добавления новой записи
+					'add_new_item'       => 'Добавление счётчики', // заголовка у вновь создаваемой записи в админ-панели.
+					'edit_item'          => 'Редактирование счётчики', // для редактирования типа записи
+					'new_item'           => 'Новые счётчики', // текст новой записи
+					'view_item'          => 'Смотреть счётчики', // для просмотра записи этого типа.
+					'search_items'       => 'Искать в счётчики', // для поиска по этим типам записи
+					'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+					'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+					'parent_item_colon'  => '', // для родителей (у древовидных типов)
+					'menu_name'          => 'Счётчики', // название меню
+				],
+				'description'         => '',
+				'public'              => true,
+				'publicly_queryable'  => true, // зависит от public
+				'exclude_from_search' => true, // зависит от public
+				'show_ui'             => true, // зависит от public
+				'show_in_nav_menus'   => true, // зависит от public
+				'show_in_menu'        => true, // показывать ли в меню адмнки
+				'show_in_admin_bar'   => true, // зависит от show_in_menu
+				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+				'rest_base'           => null, // $post_type. C WP 4.7
+				'menu_position'       => 8,
+				'menu_icon'           => 'dashicons-clipboard',
+				//'capability_type'   => 'post',
+				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+				'hierarchical'        => true,
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => [],
+				'has_archive'         => false,
+				'rewrite'             => true,
+				'query_var'           => true,
+			] );
+		}
+
+add_action( 'init', 'register_post_types6' );
+		function register_post_types6(){
+			register_post_type( 'testimonials', [
+				'label'  => null,
+				'labels' => [
+					'name'               => 'Отзывы', // основное название для типа записи
+					'singular_name'      => 'Отзыв', // название для одной записи этого типа
+					'add_new'            => 'Добавить отзыв', // для добавления новой записи
+					'add_new_item'       => 'Добавление отзыва', // заголовка у вновь создаваемой записи в админ-панели.
+					'edit_item'          => 'Редактирование отзыва', // для редактирования типа записи
+					'new_item'           => 'Новые отзывы', // текст новой записи
+					'view_item'          => 'Смотреть отзыв', // для просмотра записи этого типа.
+					'search_items'       => 'Искать в отзывах', // для поиска по этим типам записи
+					'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+					'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+					'parent_item_colon'  => '', // для родителей (у древовидных типов)
+					'menu_name'          => 'Отзывы', // название меню
+				],
+				'description'         => '',
+				'public'              => true,
+				'publicly_queryable'  => true, // зависит от public
+				'exclude_from_search' => true, // зависит от public
+				'show_ui'             => true, // зависит от public
+				'show_in_nav_menus'   => true, // зависит от public
+				'show_in_menu'        => true, // показывать ли в меню адмнки
+				'show_in_admin_bar'   => true, // зависит от show_in_menu
+				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+				'rest_base'           => null, // $post_type. C WP 4.7
+				'menu_position'       => 8,
+				'menu_icon'           => 'dashicons-groups',
+				//'capability_type'   => 'post',
+				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+				'hierarchical'        => true,
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => [],
+				'has_archive'         => false,
+				'rewrite'             => true,
+				'query_var'           => true,
+			] );
+		}
+
+		add_action( 'init', 'register_post_types7' );
+		function register_post_types7(){
+			register_post_type( 'news', [
+				'label'  => null,
+				'labels' => [
+					'name'               => 'Новости', // основное название для типа записи
+					'singular_name'      => 'Новости', // название для одной записи этого типа
+					'add_new'            => 'Добавить новости', // для добавления новой записи
+					'add_new_item'       => 'Добавление новости', // заголовка у вновь создаваемой записи в админ-панели.
+					'edit_item'          => 'Редактирование новости', // для редактирования типа записи
+					'new_item'           => 'Новые новости', // текст новой записи
+					'view_item'          => 'Смотреть новости', // для просмотра записи этого типа.
+					'search_items'       => 'Искать в новости', // для поиска по этим типам записи
+					'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+					'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+					'parent_item_colon'  => '', // для родителей (у древовидных типов)
+					'menu_name'          => 'Новости', // название меню
+				],
+				'description'         => '',
+				'public'              => true,
+				'publicly_queryable'  => true, // зависит от public
+				'exclude_from_search' => true, // зависит от public
+				'show_ui'             => true, // зависит от public
+				'show_in_nav_menus'   => true, // зависит от public
+				'show_in_menu'        => true, // показывать ли в меню адмнки
+				'show_in_admin_bar'   => true, // зависит от show_in_menu
+				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+				'rest_base'           => null, // $post_type. C WP 4.7
+				'menu_position'       => 10,
+				'menu_icon'           => 'dashicons-admin-site-alt',
+				//'capability_type'   => 'post',
+				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+				'hierarchical'        => true,
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => [],
+				'has_archive'         => false,
+				'rewrite'             => true,
+				'query_var'           => true,
+			] );
+		}
 
