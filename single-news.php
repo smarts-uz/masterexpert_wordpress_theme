@@ -1,10 +1,6 @@
 
 <?php 
-	/*
-	Template name: Новости
-	Template Post Type: news
 	
-	*/
 	get_header( 'post' )
  ?>
   <div id="main">

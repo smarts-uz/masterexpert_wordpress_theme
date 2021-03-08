@@ -1,7 +1,7 @@
 
 <?php 
 	/*
-	Template name: Полезная информация
+	Template name: О нас страница
 	
 	*/
 	get_header( 'post' )
@@ -12,11 +12,6 @@
                      <div class="breadcrumbs">
                         <!-- Breadcrumb NavXT 6.4.0 -->
                         <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Consulting WP - Miami - Insurance." href="<?php echo home_url(); ?>" class="home">Главная</a></span><span><i class="fa fa-angle-right"></i></span>
-                        <span property="itemListElement" typeof="ListItem">
-                           <span property="name">Полезная информация</span>
-                           <meta property="position" content="2">
-                        </span>
-                        <span><i class="fa fa-angle-right"></i></span>
                         <span property="itemListElement" typeof="ListItem">
                            <span property="name"><?php the_title() ?></span>
                            <meta property="position" content="3">
@@ -32,6 +27,9 @@
                               <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-9 vc_col-md-9">
                                  <div class="vc_column-inner ">
                                     <div class="wpb_wrapper">
+                                    	 <div class="vc_custom_heading text_align_left">
+                                          <h2 style="text-align: left" class="consulting-custom-title"><?php the_title() ?></h2>
+                                       </div>
                                        <div class="wpb_single_image wpb_content_element vc_align_left  vc_custom_1611997181345">
                                           <figure class="wpb_wrapper vc_figure">
                                              <div class="vc_single_image-wrapper vc_box_border_grey">
@@ -42,9 +40,7 @@
                                              </div>
                                           </figure>
                                        </div>
-                                       <div class="vc_custom_heading text_align_left">
-                                          <h2 style="text-align: left" class="consulting-custom-title"><?php the_title() ?></h2>
-                                       </div>
+                                      
                                        <div class="wpb_text_column wpb_content_element  vc_custom_1456123311085">
                                           <div class="wpb_wrapper">
                                                 <?php the_content() ?>

@@ -1,18 +1,18 @@
 <?php 
 	/*
-	Template name: Новости категория
+	Template name: Статьи категория
 	
 	*/
 	get_header( 'post' )	
 ?>
-  <div id="main">
+     <div id="main">
                <div class="page_title transparent disable_title">
                   <div class="container">
                      <div class="breadcrumbs">
                         <!-- Breadcrumb NavXT 6.4.0 -->
                         <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Consulting WP - Miami - Insurance." href="<?php echo home_url() ?>" class="home">Главная</a></span><span><i class="fa fa-angle-right"></i></span>
                         <span property="itemListElement" typeof="ListItem">
-                           <span property="name">Новости</span>
+                           <span property="name">Статьи</span>
                            <meta property="position" content="2">
                         </span>
                      </div>
@@ -26,7 +26,6 @@
                               <ul class="post_list_ul no-paginate">
 
                                               <?php 
-                                             
                                                  // параметры по умолчанию
                                                 $posts = get_posts( array(
                                                    'numberposts' => -1,
@@ -36,7 +35,6 @@
                                                    'post_type'   => 'news',
                                                    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
                                                 ) );
-
 
                                                 foreach( $posts as $post ){
                                                    setup_postdata($post);
@@ -71,17 +69,17 @@
                                                    </a>
                                                 </div>
                                              </li>
-                                          
+                                
+                              
                                  <?php
                                     }
                                     wp_reset_postdata(); // сброс
                                   ?>
-                                 
-                                                                   
+                                
+                               
                               </ul>
                            </div>
                         </div>
-                    
                      </div>
                      <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
                         <div class="sidebar-area default_widgets">

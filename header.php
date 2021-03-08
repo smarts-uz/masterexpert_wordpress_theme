@@ -76,12 +76,16 @@
                                  <div class="stm-iconbox">
                                     <i class="stm-iconbox__icon stm_hb_mtc stm-iconbox__icon_left icon_22px fa fa-phone"></i>
                                     <div class="stm-iconbox__info">
-                                       <div class="stm-iconbox__text stm-iconbox__text_nomargin">
+                                        <ul class="nav">
+                                         <?php dynamic_sidebar( 'bottom_sidebar' ); ?>
+                                          
+                                       </ul>
+                                      <!--  <div class="stm-iconbox__text stm-iconbox__text_nomargin">
                                           212 714 0177            
                                        </div>
                                        <div class="stm-iconbox__description">
                                           Free call            
-                                       </div>
+                                       </div> -->
                                     </div>
                                  </div>
                               </div>

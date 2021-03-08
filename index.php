@@ -1,7 +1,20 @@
 <?php 
 	get_header()
  ?>
+ <style>
+ 	.swiper-container2 {
+ 		width: 100%;
+ 		height: 100vh;
+ 	}
+ 	.swiper-container2 > .swiper-wrapper > .swiper-slide {
+ 		background-blend-mode: color-burn;
+ 		background-size: cover;
+ 		background-repeat: no-repeat;
+ 		border-radius: 0 30px 0 0;
+ 		 filter: blur(4px);
+ 	}
 
+ </style>
 			<div id="main">
 			   <div class="container">
 				  <div class="content-area">
@@ -12,86 +25,42 @@
 								 <div class="vc_column-inner ">
 									<div class="wpb_wrapper">
 									   <div class="wpb_revslider_element wpb_content_element">
-										  <!-- START Fullscreen Main Slider REVOLUTION SLIDER 6.3.9 -->
-										  <rs-fullwidth-wrap id="rev_slider_3_1_forcefullwidth" style="margin-top:0px;margin-bottom:0px;">
-											 <rs-module-wrap id="rev_slider_3_1_wrapper" data-source="gallery" style="background: transparent; padding: 0px; margin: 0px auto; width: 1349px; height: 900px; visibility: visible; position: absolute; overflow: visible; left: 0px;">
-												<rs-module id="rev_slider_3_1" style="width: 1349px; height: 900px; max-height: 900px;" data-version="6.3.9" data-idcheck="true" class="revslider-initialised rev_redraw_on_blurfocus" data-slideactive="rs-6">
-												   <rs-loader class="spinner0 " style="display: none;">
-													  <div class="dot1"></div>
-													  <div class="dot2"></div>
-													  <div class="bounce1"></div>
-													  <div class="bounce2"></div>
-													  <div class="bounce3"></div>
-												   </rs-loader>
-												   <rs-progress style="visibility:hidden;">
-													  <rs-progress-bar style="background: rgba(255, 255, 255, 0.5); transform-origin: 0% 50%; transform: translate3d(0px, 0px, 0px) scale(0.2344, 1);"></rs-progress-bar>
-												   </rs-progress>
-												   <rs-slides style="visibility: visible; max-height: none; height: 100%; width: 100%; overflow: hidden;">
-													  <rs-slide data-key="rs-5" data-title="Slide" data-duration="5000" data-anim="ei:d;eo:d;s:d;r:0;t:random;sl:d;" data-originalindex="1" data-origindex="0" data-description="" data-sba="" data-scroll-based="false" style="overflow: hidden; height: 100%; width: 100%; z-index: 18; opacity: 0; visibility: hidden;" data-owidth="1920" data-oheight="900" data-rspausetimeronce="0" data-ntrid="0" data-isactiveslide="false">
-														 <rs-sbg-px style="background-color: transparent;">
-															<rs-sbg-wrap data-owidth="1920" data-oheight="900" style="transform-origin: 50% 50%; visibility: inherit; opacity: 1; transform: perspective(600px); overflow: hidden;">
-															   <!--Runtime Modification - Img tag is Still Available for SEO Goals in Source - <img src="//consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/demo_slider_miami.jpeg" title="demo_slider_miami" width="1920" height="900" data-bg="p:center top;" class="rev-slidebg" data-no-retina="">-->
-															   <rs-sbg src="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/demo_slider_miami.jpeg" class="" data-bgcolor="transparent" style="background-color: transparent; background-repeat: no-repeat; background-image: url(&quot;https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/demo_slider_miami.jpeg&quot;); background-size: cover; background-position: center top; width: 100%; height: 100%; opacity: 1; transform: translate(0px, 0px); visibility: inherit; z-index: 20;" data-src-rs-ref="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/demo_slider_miami.jpeg"></rs-sbg>
-															</rs-sbg-wrap>
-														 </rs-sbg-px>
-														 <!--
-															-->
+										 <!-- START Fullscreen Main Slider REVOLUTION SLIDER 6.3.9 -->
+										 <!--   <rs-fullwidth-wrap id="rev_slider_3_1_forcefullwidth" style="margin-top:0px;margin-bottom:0px;"> -->
+										   			 <div class="swiper-container2">
+													    <div class="swiper-wrapper">
+													    	   <?php 
+				                                                 // параметры по умолчанию
+				                                                $posts = get_posts( array(
+				                                                   'numberposts' => -1,
+				                                                   'category'    => 0,
+				                                                   'orderby'     => 'date',
+				                                                   'order'       => 'ASC',
+				                                                   'post_type'   => 'sliders',
+				                                                   'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+				                                                ) );
 
-														 <!--
-															-->
-													  </rs-slide>
-													  <rs-slide data-key="rs-6" data-title="Slide" data-duration="5000" data-anim="ei:d;eo:d;s:d;r:0;t:random;sl:d;" data-originalindex="2" data-origindex="1" data-description="" data-sba="" data-scroll-based="false" style="overflow: hidden; height: 100%; width: 100%; z-index: 20; opacity: 1; visibility: inherit;" data-owidth="1920" data-oheight="900" data-rspausetimeronce="0" data-ntrid="0" data-isactiveslide="true">
-														 <rs-sbg-px style="background-color: transparent;">
-															<rs-sbg-wrap data-owidth="1920" data-oheight="900" style="transform-origin: 50% 50%; visibility: inherit; opacity: 1; transform: perspective(600px);">
-															   <!--Runtime Modification - Img tag is Still Available for SEO Goals in Source - <img src="//consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/Без-имени-1.jpg" title="Без-имени-1" width="1920" height="900" data-bg="p:center top;" class="rev-slidebg" data-no-retina="">-->
-															   <rs-sbg src="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/%D0%91%D0%B5%D0%B7-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-1.jpg" class="" data-bgcolor="transparent" style="background-color: transparent; background-repeat: no-repeat; background-image: url(&quot;https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/%D0%91%D0%B5%D0%B7-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-1.jpg&quot;); background-size: cover; background-position: center top; width: 100%; height: 100%; opacity: 1; transform: translate(0px, 0px); visibility: inherit; z-index: 20;" data-src-rs-ref="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/09/%D0%91%D0%B5%D0%B7-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-1.jpg"></rs-sbg>
-															</rs-sbg-wrap>
-														 </rs-sbg-px>
-														 <!--
-															-->
-														 <rs-layer-wrap class="rs-parallax-wrap" style="position: absolute; display: block; pointer-events: auto; left: 119.5px; top: 307px; z-index: 8; visibility: visible; perspective: 601px;">
-															<rs-loop-wrap style="position:absolute;display:block;">
-															   <rs-mask-wrap style="position: absolute; display: block; overflow: visible;">
-																  <rs-layer id="slider-3-slide-6-layer-1" data-type="text" data-color="#002e5b" data-rsp_ch="on" data-xy="xo:30px;y:m;yo:-83px;" data-text="s:48;l:60;fw:700;" data-frame_0="x:-50px;" data-frame_1="e:power2.inOut;st:500;sp:1000;sR:500;" data-frame_999="o:0;e:nothing;st:w;sR:3500;" style="z-index: 8; font-family: &quot;Open Sans&quot;; height: auto; width: auto; color: rgb(0, 46, 91); text-decoration: none; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; text-align: left; line-height: 60px; letter-spacing: 0px; font-weight: 700; font-size: 48px; transform-origin: 50% 50%; opacity: 1; transform: translate(0px, 0px); visibility: visible;" class="rs-layer" data-idcheck="true" data-stylerecorder="true" data-initialised="true">
-																	 <div class="consulting-rev-title" data-stylerecorder="true" style="text-align: left; line-height: 60px; letter-spacing: 0px; font-weight: 700; font-size: 48px;">
-																		<span data-stylerecorder="true" style="text-align: left; line-height: 60px; letter-spacing: 0px; font-weight: 700; font-size: 48px;">Pick the right insurance<br>
-																		policy for you</span>
-																	 </div>
-																  </rs-layer>
-															   </rs-mask-wrap>
-															</rs-loop-wrap>
-														 </rs-layer-wrap>
-														 <!--
-															-->
-														 <rs-layer-wrap class="rs-parallax-wrap" style="position: absolute; display: block; pointer-events: auto; left: 119.5px; top: 455px; z-index: 9; visibility: visible; perspective: 601px;">
-															<rs-loop-wrap style="position:absolute;display:block;">
-															   <rs-mask-wrap style="position: absolute; display: block; overflow: visible;">
-																  <rs-layer id="slider-3-slide-6-layer-3" data-type="text" data-color="rgba(0, 0, 0, 0.7)" data-xy="xo:30px;y:m;yo:20px;" data-text="s:20,20,18,18;l:29;" data-rsp_bd="off" data-frame_0="x:50px;" data-frame_1="e:power2.inOut;st:500;sp:1000;sR:500;" data-frame_999="o:0;e:nothing;st:w;sR:3500;" style="z-index: 9; font-family: Roboto; height: auto; width: auto; color: rgba(0, 0, 0, 0.7); text-decoration: none; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; text-align: left; line-height: 29px; letter-spacing: 0px; font-weight: 400; font-size: 20px; transform-origin: 50% 50%; opacity: 1; transform: translate(0px, 0px); visibility: visible;" class="rs-layer" data-idcheck="true" data-stylerecorder="true" data-initialised="true">Provide yourself a secure future
-																  </rs-layer>
-															   </rs-mask-wrap>
-															</rs-loop-wrap>
-														 </rs-layer-wrap>
-														 <!--
-															-->
-														 <rs-layer-wrap class="rs-parallax-wrap" style="position: absolute; display: block; pointer-events: auto; left: 119.5px; top: 546px; z-index: 10; visibility: visible; perspective: 601px;">
-															<rs-loop-wrap style="position:absolute;display:block;">
-															   <rs-mask-wrap style="position: absolute; display: block; overflow: visible;">
-																  <rs-layer id="slider-3-slide-6-layer-4" data-type="text" data-color="rgba(255, 255, 255, 1)" data-xy="xo:30px;y:m;yo:121px;" data-text="s:20,20,18,18;l:22;" data-rsp_bd="off" data-border="bor:50px,50px,50px,50px;" data-frame_0="y:50px;" data-frame_1="e:power2.inOut;st:500;sp:1000;sR:500;" data-frame_999="o:0;e:nothing;st:w;sR:3500;" style="z-index: 10; font-family: Roboto; height: auto; width: auto; color: rgb(255, 255, 255); text-decoration: none; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; text-align: left; line-height: 22px; letter-spacing: 0px; font-weight: 400; font-size: 20px; border-radius: 50px; transform-origin: 50% 50%; opacity: 1; transform: translate(0px, 0px); visibility: visible;" class="rs-layer" data-idcheck="true" data-stylerecorder="true" data-initialised="true"><a href="https://consulting.stylemixthemes.com/miami/webinars/" class="button btn-md bordered" target="_blank">View webinars
-																	 </a>
-																  </rs-layer>
-															   </rs-mask-wrap>
-															</rs-loop-wrap>
-														 </rs-layer-wrap>
-														 <!--
-															-->
-													  </rs-slide>
-												   </rs-slides>
-												</rs-module>
+				                                                foreach( $posts as $post ){
+				                                                   setup_postdata($post);
+				                                                   ?>
+				                                                  
+															      	<div class="swiper-slide" 
+														      			 style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>');">
+															      	</div>
+													     
+														       <?php
+				                                                   }
+				                                                   wp_reset_postdata(); // сброс
+				                                              ?>
+													     
+													    </div>
+													    <!-- Add Scrollbar -->
+													    <div class="swiper-scrollbar"></div>
+													</div>
 
-											 </rs-module-wrap>
-											 <rs-fw-forcer style="height:900px"></rs-fw-forcer>
-										  </rs-fullwidth-wrap>
-										  <!-- END REVOLUTION SLIDER -->
+										   			<!--  <rs-fw-forcer style="height:900px"></rs-fw-forcer>
+										   	  </rs-fullwidth-wrap> -->
+									 <!-- END REVOLUTION SLIDER -->
 									   </div>
 									</div>
 								 </div>
@@ -269,20 +238,6 @@
 											wp_reset_postdata(); // сброс
 
 										  ?>
-<!-- 
-										  <div class="item">
-											 <div class="step_title">Get consultation</div>
-											 <div class="step_description">Our manager will process your application and arrange a meeting to discuss the details.</div>
-										  </div>
-										  <div class="item">
-											 <div class="step_title">Prepare documents</div>
-											 <div class="step_description">Prepare all the necessary documents and send them for verification.</div>
-										  </div>
-										  <div class="item">
-											 <div class="step_title">Get insurance</div>
-											 <div class="step_description">Get your insurance and stop worrying about your future, protect yourself and your family.</div>
-										  </div>
- -->
 									   </div>
 									</div>
 								 </div>
@@ -550,14 +505,17 @@
 								 <div class="vc_column-inner ">
 									<div class="wpb_wrapper">
 									   <div class="vc_custom_heading vc_custom_1612163468620 text_align_center title_no_stripe">
-										  <h3 style="font-size: 40px;color: #ffffff;line-height: 46px;text-align: center;font-weight:600" class="consulting-custom-title">It’s time to <mark>start</mark><br>
-											 investing in your safety
+										  <h3 style="font-size: 40px;color: #ffffff;line-height: 46px;text-align: center;font-weight:600" class="consulting-custom-title">
+										  	<?php the_field('nineth_block_title') ?>
+										  	
 										  </h3>
 									   </div>
 									   <div class="vc_custom_heading vc_custom_1612258597095 text_align_center title_no_stripe">
-										  <p style="font-size: 18px;color: #ffffff;line-height: 30px;text-align: center;font-weight:400" class="consulting-custom-title">Keep your family secure. Make sure all your valuable assets are protected — and we will help you with that!</p>
+										  <p style="font-size: 18px;color: #ffffff;line-height: 30px;text-align: center;font-weight:400" class="consulting-custom-title">
+										  	<?php the_field('nineth_block_content') ?>
+										  </p>
 									   </div>
-									   <div class="vc_btn3-container vc_btn3-center"><a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-round vc_btn3-style-classic vc_btn3-color-theme_style_1" href="https://consulting.stylemixthemes.com/miami/cost-calculator/" title="" target="_blank">Get quote</a></div>
+									   <div class="vc_btn3-container vc_btn3-center"><a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-round vc_btn3-style-classic vc_btn3-color-theme_style_1" href="" title="" target="_blank"><?php the_field('nineth_block_btn_name') ?></a></div>
 									</div>
 								 </div>
 							  </div>

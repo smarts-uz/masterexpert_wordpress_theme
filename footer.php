@@ -12,22 +12,22 @@
                      <div class="socials">
                         <ul>
                            <li>
-                              <a href="https://consulting.stylemixthemes.com/miami/#" target="_blank" class="social-facebook">
+                              <a href="" target="_blank" class="social-facebook">
                               <i class="fa fa-facebook"></i>
                               </a>
                            </li>
                            <li>
-                              <a href="https://consulting.stylemixthemes.com/miami/#" target="_blank" class="social-twitter">
+                              <a href="" target="_blank" class="social-twitter">
                               <i class="fa fa-twitter"></i>
                               </a>
                            </li>
                            <li>
-                              <a href="https://consulting.stylemixthemes.com/miami/#" target="_blank" class="social-instagram">
+                              <a href="" target="_blank" class="social-instagram">
                               <i class="fa fa-instagram"></i>
                               </a>
                            </li>
                            <li>
-                              <a href="https://consulting.stylemixthemes.com/miami/#" target="_blank" class="social-youtube">
+                              <a href="" target="_blank" class="social-youtube">
                               <i class="fa fa-youtube"></i>
                               </a>
                            </li>
@@ -39,8 +39,41 @@
             <div class="widgets_row">
                <div class="container">
                   <div class="footer_widgets">
+
                      <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <ul class="nav">
+                          <?php dynamic_sidebar( 'top_sidebar' ); ?>
+                           <li>
+                               <h4 class="widget_title no_stripe">Последние новости</h4>
+                              <ul id="menu-quick-links" class="menu">
+                                    <?php 
+                                             
+                                                 // параметры по умолчанию
+                                                $posts = get_posts( array(
+                                                   'numberposts' => 5,
+                                                   'category'    => 0,
+                                                   'orderby'     => 'date',
+                                                   'order'       => 'DESC',
+                                                   'post_type'   => 'news',
+                                                   'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                                                ) );
+
+
+                                                foreach( $posts as $post ){
+                                                   setup_postdata($post);
+                                                   ?>
+                                    <li id="menu-item-7666" class="menu-item menu-item-type-post_type_archive menu-item-object-stm_event menu-item-7666"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
+                                       <?php
+                                             }
+                                             wp_reset_postdata(); // сброс
+                                        ?>
+                                    
+                                 </ul>
+                           </li>
+                        </ul>
+
+
+                        <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                            <section id="text-2" class="widget widget_text">
                               <h4 class="widget_title no_stripe">ABOUT</h4>
                               <div class="textwidget">
@@ -52,6 +85,7 @@
                            <section id="text-3" class="widget widget_text">
                               <h4 class="widget_title no_stripe">CONTACT INFO</h4>
                               <div class="textwidget">
+                               
                                  <p>Call-centre: 1 (323) 938-5798<br>
                                     Fax: 1 (888) 637-7262<br>
                                     Email: info@styleixthemes.com
@@ -96,8 +130,10 @@
                                  </ul>
                               </div>
                            </section>
-                        </div>
+                        </div> -->
                      </div>
+
+
                   </div>
                </div>
             </div>

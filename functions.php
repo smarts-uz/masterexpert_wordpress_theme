@@ -1,34 +1,5 @@
 <?php 
 	
-	if( function_exists('acf_add_options_page') ) {
-			acf_add_options_page();
-			acf_add_options_page_sub_page('Header');
-			acf_add_options_page_sub_page('Footer');
-
-			acf_add_options_page(array(
-		'page_title' 	=> 'Theme General Settings',
-		'menu_title'	=> 'Theme Settings',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
-	
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Header Settings',
-		'menu_title'	=> 'Header',
-		'parent_slug'	=> 'theme-general-settings',
-	));
-	
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Footer Settings',
-		'menu_title'	=> 'Footer',
-		'parent_slug'	=> 'theme-general-settings',
-	));
-
-		}
-
-
-
 	add_action('wp_enqueue_scripts', 'theme_styles');
 	add_action('wp_enqueue_scripts', 'theme_scripts');
 	add_theme_support( 'post-thumbnails' );
@@ -36,11 +7,16 @@
 
 	add_theme_support( 'custom-logo' );
 
-	function myMenu(){
-	register_nav_menus( [
-		'header_menu' => 'Главное меню',
-	] );
-} 
+	add_action( 'widgets_init', 'register_my_widgets' );
+	add_action( 'widgets_init', 'register_my_widgets2' );
+
+
+
+		function myMenu(){
+		register_nav_menus( [
+			'header_menu' => 'Главное меню',
+		] );
+	} 
 
 
 	function theme_styles() {
@@ -74,6 +50,41 @@
 		wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/9cf2cb994e.js', array(), false, true  );
 
 	}
+
+
+	function register_my_widgets(){
+
+	register_sidebar( array(
+		'name'          => 'Bottom sidebar',
+		'id'            => "bottom_sidebar",
+		'description'   => 'Это нижний сайдбар',
+		// 'class'         => '',
+		// 'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		// 'after_widget'  => "</li>\n",
+		// 'before_title'  => '<h2 class="widgettitle">',
+		// 'after_title'   => "</h2>\n",
+		// 'before_sidebar' => '', // WP 5.6
+		// 'after_sidebar'  => '', // WP 5.6
+	) );
+}
+
+	function register_my_widgets2(){
+
+	register_sidebar( array(
+		'name'          => 'Top sidebar',
+		'id'            => "top_sidebar",
+		'description'   => 'Это верхний сайдбар',
+		// 'class'         => '',
+		// 'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		// 'after_widget'  => "</li>\n",
+		// 'before_title'  => '<h2 class="widgettitle">',
+		// 'after_title'   => "</h2>\n",
+		// 'before_sidebar' => '', // WP 5.6
+		// 'after_sidebar'  => '', // WP 5.6
+	) );
+}
+
+	
 
 
 	add_action( 'init', 'register_post_types' );
@@ -350,7 +361,7 @@ add_action( 'init', 'register_post_types6' );
 				'description'         => '',
 				'public'              => true,
 				'publicly_queryable'  => true, // зависит от public
-				'exclude_from_search' => true, // зависит от public
+				'exclude_from_search' => false, // зависит от public
 				'show_ui'             => true, // зависит от public
 				'show_in_nav_menus'   => true, // зависит от public
 				'show_in_menu'        => true, // показывать ли в меню адмнки
@@ -363,11 +374,139 @@ add_action( 'init', 'register_post_types6' );
 				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
 				'hierarchical'        => true,
-				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-				'taxonomies'          => [],
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt', 'author', 'page-attributes'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => ['news_article'],
 				'has_archive'         => false,
 				'rewrite'             => true,
 				'query_var'           => true,
 			] );
 		}
+
+		add_action( 'init', 'register_post_types8' );
+		function register_post_types8(){
+			register_post_type( 'our_command', [
+				'label'  => null,
+				'labels' => [
+					'name'               => 'Наша комманда', // основное название для типа записи
+					'singular_name'      => 'Персонал', // название для одной записи этого типа
+					'add_new'            => 'Добавить персонал', // для добавления новой записи
+					'add_new_item'       => 'Добавление персонала', // заголовка у вновь создаваемой записи в админ-панели.
+					'edit_item'          => 'Редактирование персонала', // для редактирования типа записи
+					'new_item'           => 'Новый персонал', // текст новой записи
+					'view_item'          => 'Смотреть персонала', // для просмотра записи этого типа.
+					'search_items'       => 'Искать в персоналах', // для поиска по этим типам записи
+					'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+					'not_found_in_trash' => 'Не найдено в персоналах', // если не было найдено в корзине
+					'parent_item_colon'  => '', // для родителей (у древовидных типов)
+					'menu_name'          => 'Наша комманда', // название меню
+				],
+				'description'         => '',
+				'public'              => true,
+				'publicly_queryable'  => true, // зависит от public
+				'exclude_from_search' => false, // зависит от public
+				'show_ui'             => true, // зависит от public
+				'show_in_nav_menus'   => true, // зависит от public
+				'show_in_menu'        => true, // показывать ли в меню адмнки
+				'show_in_admin_bar'   => true, // зависит от show_in_menu
+				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+				'rest_base'           => null, // $post_type. C WP 4.7
+				'menu_position'       => 11,
+				'menu_icon'           => 'dashicons-id-alt',
+				//'capability_type'   => 'post',
+				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+				'hierarchical'        => true,
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt', 'author', 'page-attributes'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => ['news_article'],
+				'has_archive'         => false,
+				'rewrite'             => true,
+				'query_var'           => true,
+			] );
+		}
+
+		add_action( 'init', 'register_post_types9' );
+		function register_post_types9(){
+			register_post_type( 'sliders', [
+				'label'  => null,
+				'labels' => [
+					'name'               => 'Слайдер', // основное название для типа записи
+					'singular_name'      => 'Слайд', // название для одной записи этого типа
+					'add_new'            => 'Добавить слайд', // для добавления новой записи
+					'add_new_item'       => 'Добавление слайда', // заголовка у вновь создаваемой записи в админ-панели.
+					'edit_item'          => 'Редактирование слайда', // для редактирования типа записи
+					'new_item'           => 'Новый слайд', // текст новой записи
+					'view_item'          => 'Смотреть слайд', // для просмотра записи этого типа.
+					'search_items'       => 'Искать в слайдах', // для поиска по этим типам записи
+					'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+					'not_found_in_trash' => 'Не найдено в слайдах', // если не было найдено в корзине
+					'parent_item_colon'  => '', // для родителей (у древовидных типов)
+					'menu_name'          => 'Слайдер', // название меню
+				],
+				'description'         => '',
+				'public'              => true,
+				'publicly_queryable'  => true, // зависит от public
+				'exclude_from_search' => false, // зависит от public
+				'show_ui'             => true, // зависит от public
+				'show_in_nav_menus'   => true, // зависит от public
+				'show_in_menu'        => true, // показывать ли в меню адмнки
+				'show_in_admin_bar'   => true, // зависит от show_in_menu
+				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+				'rest_base'           => null, // $post_type. C WP 4.7
+				'menu_position'       => 11,
+				'menu_icon'           => 'dashicons-format-gallery',
+				//'capability_type'   => 'post',
+				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+				'hierarchical'        => true,
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => ['news_article'],
+				'has_archive'         => false,
+				'rewrite'             => true,
+				'query_var'           => true,
+			] );
+		}
+
+
+		// хук для регистрации
+add_action( 'init', 'create_taxonomy' );
+function create_taxonomy(){
+
+	// список параметров: wp-kama.ru/function/get_taxonomy_labels
+	register_taxonomy( 'news_articles', [ 'news' ], [
+		'label'                 => '', // определяется параметром $labels->name
+		'labels'                => [
+			'name'              => 'Категории',
+			'singular_name'     => 'Категория',
+			'search_items'      => 'Искать в категории',
+			'all_items'         => 'Все категории',
+			'view_item '        => 'Посмотреть категории',
+			'parent_item'       => 'Родитель категорий',
+			'parent_item_colon' => 'Родитель категорий:',
+			'edit_item'         => 'Изенить категорию',
+			'update_item'       => 'Обновить категорию',
+			'add_new_item'      => 'Добавить новую категорию',
+			'new_item_name'     => 'Новое имя категории',
+			'menu_name'         => 'Категории',
+		],
+		'description'           => 'Категории в основном чтобы разделить новости и статьи', // описание таксономии
+		'public'                => true,
+		// 'publicly_queryable'    => null, // равен аргументу public
+		// 'show_in_nav_menus'     => true, // равен аргументу public
+		// 'show_ui'               => true, // равен аргументу public
+		// 'show_in_menu'          => true, // равен аргументу show_ui
+		// 'show_tagcloud'         => true, // равен аргументу show_ui
+		// 'show_in_quick_edit'    => null, // равен аргументу show_ui
+		'hierarchical'          => false,
+
+		'rewrite'               => true,
+		//'query_var'             => $taxonomy, // название параметра запроса
+		'capabilities'          => array(),
+		'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+		'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+		'show_in_rest'          => null, // добавить в REST API
+		'rest_base'             => null, // $taxonomy
+		// '_builtin'              => false,
+		//'update_count_callback' => '_update_post_term_count',
+	] );
+}
 

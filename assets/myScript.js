@@ -15,3 +15,28 @@ var swiper = new Swiper('.swiper-container', {
         disableOnInteraction: false,
       },
   });
+
+  var swiper = new Swiper('.swiper-container2', {
+    lazy: {
+      loadPrevNext: true,
+    },
+    cubeEffect: {
+      slideShadows: true,
+    },
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      hide: true,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  });
+
+  const allLinks = document.querySelectorAll('a');
+  allLinks.forEach(item => {
+   var hrefValue = item.getAttribute('href');
+    if(hrefValue == '#') {
+      item.preventDefault()
+    }
+  })
