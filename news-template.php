@@ -23,10 +23,9 @@
                      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                         <div class="col_in __padd-right">
                            <div class="posts_list with_sidebar">
-                              <ul class="post_list_ul no-paginate">
+                              <ul class="post_list_ul no-paginate only_news">
 
                                               <?php 
-                                             
                                                  // параметры по умолчанию
                                                 $posts = get_posts( array(
                                                    'numberposts' => -1,
@@ -34,14 +33,18 @@
                                                    'orderby'     => 'date',
                                                    'order'       => 'ASC',
                                                    'post_type'   => 'news',
+                                                   'category' => '-3',
                                                    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
                                                 ) );
 
 
                                                 foreach( $posts as $post ){
                                                    setup_postdata($post);
-                                                   ?>
 
+                                              // $args = array('post_type' => 'news');
+                                              // $query = new WP_Query($args);
+                                              // while($query -> have_posts()) :$query -> the_post();
+                                                   ?>
 
                                              <li id="post-135" class="stm_post_info post-135 post type-post status-publish format-standard has-post-thumbnail hentry category-competitive-research-analysis tag-401k tag-online-services tag-portfolios">
                                                 <h4 class="stripe_2"><?php the_title() ?></h4>
@@ -67,84 +70,33 @@
                                                 </div>
                                                 <div class="post_read_more">
                                                    <a class="button bordered icon_right" href="<?php the_permalink() ?>">
-                                                   Читать полностью         <i class="fa fa-chevron-right"></i>
+                                                   Читать полностью<i class="fa fa-chevron-right"></i>
                                                    </a>
                                                 </div>
                                              </li>
-                                          
+                                              
                                  <?php
+                                //  endwhile;
                                     }
                                     wp_reset_postdata(); // сброс
                                   ?>
-                                 
-                                                                   
-                              </ul>
+
+                                
                            </div>
                         </div>
                     
                      </div>
-                     <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-                        <div class="sidebar-area default_widgets">
-                           <aside id="search-3" class="widget widget_search">
-                              <h5 class="widget_title">Search</h5>
-                              <form method="get" class="search-form" action="https://consulting.stylemixthemes.com/miami/">
-                                 <input type="search" class="form-control" placeholder="Search..." value="" name="s">
-                                 <button type="submit"><i class="fa fa-search"></i></button>
-                              </form>
-                           </aside>
-                           <aside id="archives-3" class="widget widget_archive">
-                              <h5 class="widget_title">Archive</h5>
-                              <ul>
-                                 <li><a href="https://consulting.stylemixthemes.com/miami/2021/01/">January 2021</a></li>
-                              </ul>
-                           </aside>
-                           <aside id="media_gallery-2" class="widget widget_media_gallery">
-                              <div id="gallery-1" class="gallery galleryid-745 gallery-columns-3 gallery-size-thumbnail">
-                                 <figure class="gallery-item">
-                                    <div class="gallery-icon landscape">
-                                       <a href="https://consulting.stylemixthemes.com/miami/contact-us/statistics_bg-1-1-700x660/"><img width="150" height="150" src="./news – Consulting WP – Miami – Insurance_files/statistics_bg-1-1-700x660-1-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" srcset="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/statistics_bg-1-1-700x660-1-150x150.jpg 150w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/statistics_bg-1-1-700x660-1-50x50.jpg 50w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/statistics_bg-1-1-700x660-1-320x320.jpg 320w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/statistics_bg-1-1-700x660-1-300x300.jpg 300w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/statistics_bg-1-1-700x660-1-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px"></a>
-                                    </div>
-                                 </figure>
-                                 <figure class="gallery-item">
-                                    <div class="gallery-icon landscape">
-                                       <a href="https://consulting.stylemixthemes.com/miami/2021/01/22/within-the-construction-industry-as-their-overdraft/news-grid-5-1110x550/"><img width="150" height="150" src="./news – Consulting WP – Miami – Insurance_files/news-grid-5-1110x550-1-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" srcset="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-grid-5-1110x550-1-150x150.jpg 150w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-grid-5-1110x550-1-50x50.jpg 50w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-grid-5-1110x550-1-320x320.jpg 320w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-grid-5-1110x550-1-300x300.jpg 300w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-grid-5-1110x550-1-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px"></a>
-                                    </div>
-                                 </figure>
-                                 <figure class="gallery-item">
-                                    <div class="gallery-icon landscape">
-                                       <a href="https://consulting.stylemixthemes.com/miami/2021/01/30/seven-weeks-working-pro-bono-with-a-national-charity/news-list-1-1110x550/"><img width="150" height="150" src="./news – Consulting WP – Miami – Insurance_files/news-list-1-1110x550-1-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" srcset="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-list-1-1110x550-1-150x150.jpg 150w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-list-1-1110x550-1-50x50.jpg 50w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-list-1-1110x550-1-320x320.jpg 320w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-list-1-1110x550-1-300x300.jpg 300w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/news-list-1-1110x550-1-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px"></a>
-                                    </div>
-                                 </figure>
-                                 <figure class="gallery-item">
-                                    <div class="gallery-icon landscape">
-                                       <a href="https://consulting.stylemixthemes.com/miami/contact-us/building-1/"><img width="150" height="150" src="./news – Consulting WP – Miami – Insurance_files/building-1-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" srcset="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/building-1-150x150.jpg 150w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/building-1-50x50.jpg 50w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/building-1-320x320.jpg 320w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/building-1-300x300.jpg 300w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2021/01/building-1-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px"></a>
-                                    </div>
-                                 </figure>
-                                 <figure class="gallery-item">
-                                    <div class="gallery-icon landscape">
-                                       <a href="https://consulting.stylemixthemes.com/miami/works/focus-on-core-delivers-growth-for-retailer-2/work-2-360x190/"><img width="150" height="150" src="./news – Consulting WP – Miami – Insurance_files/work-2-360x190-1-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" srcset="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/11/work-2-360x190-1-150x150.jpg 150w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/11/work-2-360x190-1-50x50.jpg 50w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2019/11/work-2-360x190-1-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px"></a>
-                                    </div>
-                                 </figure>
-                                 <figure class="gallery-item">
-                                    <div class="gallery-icon landscape">
-                                       <a href="https://consulting.stylemixthemes.com/miami/works/applying-commercial-excellence-in-chemicals/our-work-4-1-350x195/"><img width="150" height="150" src="./news – Consulting WP – Miami – Insurance_files/our-work-4-1-350x195-1-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" srcset="https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/our-work-4-1-350x195-1-150x150.jpg 150w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/our-work-4-1-350x195-1-50x50.jpg 50w, https://consulting.stylemixthemes.com/miami/wp-content/uploads/sites/49/2016/01/our-work-4-1-350x195-1-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px"></a>
-                                    </div>
-                                 </figure>
-                              </div>
-                           </aside>
-                           <aside id="text-4" class="widget widget_text">
-                              <h5 class="widget_title">But first, there’s something different…</h5>
-                              <div class="textwidget">
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                              </div>
-                           </aside>
-                        </div>
-                     </div>
+                   
+                       <!-- right-sidebar started -->
+                               <?php get_template_part( 'template-parts/right-sidebar-news', get_post_type() );  ?>
+                        <!-- right-sidebar ended -->
+
                   </div>
                </div>
                <!--.container-->
             </div>
             <!--#main-->
+
 
             <?php 
             get_footer()

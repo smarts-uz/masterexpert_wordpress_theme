@@ -25,8 +25,6 @@
 								 <div class="vc_column-inner ">
 									<div class="wpb_wrapper">
 									   <div class="wpb_revslider_element wpb_content_element">
-										 <!-- START Fullscreen Main Slider REVOLUTION SLIDER 6.3.9 -->
-										 <!--   <rs-fullwidth-wrap id="rev_slider_3_1_forcefullwidth" style="margin-top:0px;margin-bottom:0px;"> -->
 										   			 <div class="swiper-container2">
 													    <div class="swiper-wrapper">
 													    	   <?php 
@@ -57,10 +55,7 @@
 													    <!-- Add Scrollbar -->
 													    <div class="swiper-scrollbar"></div>
 													</div>
-
-										   			<!--  <rs-fw-forcer style="height:900px"></rs-fw-forcer>
-										   	  </rs-fullwidth-wrap> -->
-									 <!-- END REVOLUTION SLIDER -->
+										   		
 									   </div>
 									</div>
 								 </div>
@@ -274,7 +269,7 @@
 											 <div class="stm_zoom_grid__item">
 												<div class="single_meeting">
 												   <div class="image">
-													  <a href="<?php the_permalink() ?>">
+													  <a href="" class="<?php the_field('class_for_popups') ?>">
 														<?php
 														the_post_thumbnail()
 														 ?>
@@ -366,8 +361,6 @@
 													  jQuery(document).ready(function ($) {
 														var countMain = +'<?php echo $countMain ?>';
 														var countDelay = +'<?php echo $countDelay ?>';
-														console.log(countMain);
-														console.log(countDelay);
 														  var counter_<?php the_field('countUniqName') ?> =
 														  new countUp("counter_<?php the_field('countUniqName') ?>", 0, countMain, 0, countDelay, {
 															  useEasing: true,
@@ -515,7 +508,11 @@
 										  	<?php the_field('nineth_block_content') ?>
 										  </p>
 									   </div>
-									   <div class="vc_btn3-container vc_btn3-center"><a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-round vc_btn3-style-classic vc_btn3-color-theme_style_1" href="" title="" target="_blank"><?php the_field('nineth_block_btn_name') ?></a></div>
+									   <div class="vc_btn3-container vc_btn3-center">
+									   	<button class="pum-trigger popmake-500 vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-round vc_btn3-style-classic vc_btn3-color-theme_style_1" href="" title="" target="_blank">
+									   		<?php the_field('nineth_block_btn_name') ?>
+								   		</button>
+									   	</div>
 									</div>
 								 </div>
 							  </div>

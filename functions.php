@@ -9,7 +9,10 @@
 
 	add_action( 'widgets_init', 'register_my_widgets' );
 	add_action( 'widgets_init', 'register_my_widgets2' );
-
+	add_action( 'widgets_init', 'register_my_widgets3' );
+	add_action( 'widgets_init', 'register_my_widgets4' );
+	add_action( 'widgets_init', 'register_my_widgets5' );
+	add_action( 'widgets_init', 'register_my_widgets6' );
 
 
 		function myMenu(){
@@ -17,7 +20,6 @@
 			'header_menu' => 'Главное меню',
 		] );
 	} 
-
 
 	function theme_styles() {
 		wp_enqueue_style('styles', get_stylesheet_uri());
@@ -58,13 +60,7 @@
 		'name'          => 'Bottom sidebar',
 		'id'            => "bottom_sidebar",
 		'description'   => 'Это нижний сайдбар',
-		// 'class'         => '',
-		// 'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		// 'after_widget'  => "</li>\n",
-		// 'before_title'  => '<h2 class="widgettitle">',
-		// 'after_title'   => "</h2>\n",
-		// 'before_sidebar' => '', // WP 5.6
-		// 'after_sidebar'  => '', // WP 5.6
+	
 	) );
 }
 
@@ -74,17 +70,60 @@
 		'name'          => 'Top sidebar',
 		'id'            => "top_sidebar",
 		'description'   => 'Это верхний сайдбар',
-		// 'class'         => '',
-		// 'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		// 'after_widget'  => "</li>\n",
-		// 'before_title'  => '<h2 class="widgettitle">',
-		// 'after_title'   => "</h2>\n",
-		// 'before_sidebar' => '', // WP 5.6
-		// 'after_sidebar'  => '', // WP 5.6
+	
 	) );
 }
 
-	
+	function register_my_widgets3(){
+
+	register_sidebar( array(
+		'name'          => 'Right sidebar',
+		'id'            => "right_sidebar",
+		'description'   => 'Это правый сайдбар',
+		'class'         => 'wpb_wrapper',
+		
+	) );
+}
+
+	function register_my_widgets4(){
+
+		register_sidebar( array(
+			'name'          => 'Right sidebar of presentation',
+			'id'            => "right_sidebar_of_ppt",
+			'description'   => 'Это правый сайдбар для презентации',
+			
+		) );
+	}
+
+function register_my_widgets5(){
+	register_sidebar( array(
+		'name'          => 'Right sidebar for news',
+		'id'            => "right_sidebar_for_news",
+		'description'   => '',
+		'class'         => '',
+		'before_widget' => '<aside id="" class="widget %2$s">',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h5 class="widget_title">',
+		'after_title'   => "</h5>\n",
+		'before_sidebar' => '', // WP 5.6
+		'after_sidebar'  => '', // WP 5.6
+	) );
+}
+
+function register_my_widgets6(){
+
+		register_sidebar( array(
+			'name'          => 'Right sidebar for news for text',
+			'id'            => "right_sidebar_for_news_text",
+			'description'   => 'Это правый сайдбар для новостей для текста',
+			'before_widget' => '<aside id="" class="widget %2$s">',
+		'after_widget'  => "</aside>\n",
+		'before_title'  => '<h5 class="widget_title">',
+		'after_title'   => "</h5>\n",
+			
+		) );
+	}
+
 
 
 	add_action( 'init', 'register_post_types' );
@@ -466,6 +505,92 @@ add_action( 'init', 'register_post_types6' );
 			] );
 		}
 
+			add_action( 'init', 'register_post_types10' );
+		function register_post_types10(){
+			register_post_type( 'vacancies', [
+				'label'  => null,
+				'labels' => [
+					'name'               => 'Вакансии', // основное название для типа записи
+					'singular_name'      => 'Вакансия', // название для одной записи этого типа
+					'add_new'            => 'Добавить вакансию', // для добавления новой записи
+					'add_new_item'       => 'Добавление вакансии', // заголовка у вновь создаваемой записи в админ-панели.
+					'edit_item'          => 'Редактирование вакансии', // для редактирования типа записи
+					'new_item'           => 'Новая вакансия', // текст новой записи
+					'view_item'          => 'Смотреть вакансию', // для просмотра записи этого типа.
+					'search_items'       => 'Искать в вакансиях', // для поиска по этим типам записи
+					'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+					'not_found_in_trash' => 'Не найдено в вакансиях', // если не было найдено в корзине
+					'parent_item_colon'  => '', // для родителей (у древовидных типов)
+					'menu_name'          => 'Вакансии', // название меню
+				],
+				'description'         => '',
+				'public'              => true,
+				'publicly_queryable'  => true, // зависит от public
+				'exclude_from_search' => false, // зависит от public
+				'show_ui'             => true, // зависит от public
+				'show_in_nav_menus'   => true, // зависит от public
+				'show_in_menu'        => true, // показывать ли в меню адмнки
+				'show_in_admin_bar'   => true, // зависит от show_in_menu
+				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+				'rest_base'           => null, // $post_type. C WP 4.7
+				'menu_position'       => 12,
+				'menu_icon'           => 'dashicons-money',
+				//'capability_type'   => 'post',
+				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+				'hierarchical'        => true,
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => ['news_article'],
+				'has_archive'         => false,
+				'rewrite'             => true,
+				'query_var'           => true,
+			] );
+		}
+
+
+		add_action( 'init', 'register_post_types11' );
+		function register_post_types11(){
+			register_post_type( 'banks', [
+				'label'  => null,
+				'labels' => [
+					'name'               => 'Банк', // основное название для типа записи
+					'singular_name'      => 'Банк', // название для одной записи этого типа
+					'add_new'            => 'Добавить банк', // для добавления новой записи
+					'add_new_item'       => 'Добавление банка', // заголовка у вновь создаваемой записи в админ-панели.
+					'edit_item'          => 'Редактирование банка', // для редактирования типа записи
+					'new_item'           => 'Новый бакн', // текст новой записи
+					'view_item'          => 'Смотреть бакн', // для просмотра записи этого типа.
+					'search_items'       => 'Искать в бакнах', // для поиска по этим типам записи
+					'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+					'not_found_in_trash' => 'Не найдено в бакнах', // если не было найдено в корзине
+					'parent_item_colon'  => '', // для родителей (у древовидных типов)
+					'menu_name'          => 'Банки', // название меню
+				],
+				'description'         => '',
+				'public'              => true,
+				'publicly_queryable'  => true, // зависит от public
+				'exclude_from_search' => false, // зависит от public
+				'show_ui'             => true, // зависит от public
+				'show_in_nav_menus'   => true, // зависит от public
+				'show_in_menu'        => true, // показывать ли в меню адмнки
+				'show_in_admin_bar'   => true, // зависит от show_in_menu
+				'show_in_rest'        => true, // добавить в REST API. C WP 4.7
+				'rest_base'           => null, // $post_type. C WP 4.7
+				'menu_position'       => 13,
+				'menu_icon'           => 'dashicons-building',
+				//'capability_type'   => 'post',
+				//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+				//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+				'hierarchical'        => true,
+				'supports'            => [ 'title', 'editor', 'thumbnail', 'custom-fields'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+				'taxonomies'          => ['news_article'],
+				'has_archive'         => false,
+				'rewrite'             => true,
+				'query_var'           => true,
+			] );
+		}
+
+
 
 		// хук для регистрации
 add_action( 'init', 'create_taxonomy' );
@@ -509,4 +634,3 @@ function create_taxonomy(){
 		//'update_count_callback' => '_update_post_term_count',
 	] );
 }
-

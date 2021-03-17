@@ -33,10 +33,7 @@ var swiper = new Swiper('.swiper-container', {
     },
   });
 
-  const allLinks = document.querySelectorAll('a');
-  allLinks.forEach(item => {
-   var hrefValue = item.getAttribute('href');
-    if(hrefValue == '#') {
-      item.preventDefault()
-    }
-  })
+  
+
+
+
